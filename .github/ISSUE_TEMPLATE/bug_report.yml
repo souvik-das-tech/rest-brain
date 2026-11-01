@@ -1,0 +1,58 @@
+name: Bug report
+description: Something does not work as described.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Please do not paste your `.env`, passwords or tokens.
+        Security problems go through the private report described in SECURITY.md.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The request you sent (curl, JS, Python...) and the response.
+      placeholder: |
+        1. pm2 start ecosystem.config.js
+        2. curl -u admin:*** -X POST http://127.0.0.1:8787/sessions ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: health
+    attributes:
+      label: Output of GET /health
+      description: Remove paths or user names if you prefer.
+      render: json
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log lines
+      description: From brain.log (Windows %LOCALAPPDATA%\Rest-Brain\logs, Linux ~/.local/share/rest-brain/logs) or pm2 logs.
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: Rest Brain version
+      placeholder: "2.0.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options: [Windows, Linux, macOS, Other]
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Python and AGY versions
+      placeholder: "Python 3.12.10, agy 1.4.12"
